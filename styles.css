@@ -1,5 +1,5 @@
 body {
-    background-color: #white;
+    background-color: #0d1657;
     font-family: Arial, sans-serif;
 }
 
@@ -7,18 +7,27 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: white;
+    background-color: #0d1657;
     border-radius: 10px;
     text-align: center;
+    color: white;
+}
+
+/* Estilo para eliminar el subrayado de los enlaces */
+a {
+    text-decoration: none; /* Quita el subrayado */
+    color: white;
 }
 
 h1 {
     font-size: 36px;
+    font-family: 'Martian Mono', monospace;
 }
 
 h2 {
     font-size: 18px;
     margin-top: 10px;
+    font-family: 'Martian Mono', monospace;
 }
 
 .buttons {
@@ -43,4 +52,3 @@ th, td {
     border: 1px solid #ccc;
     padding: 10px;
 }
-
