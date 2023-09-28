@@ -255,25 +255,28 @@ hardButton.addEventListener("click", () => {
     });
 });
 
-// Función para mostrar una fila aleatoria de la tabla
-function showRandomRow() {
-    const randomIndex = Math.floor(Math.random() * irregularVerbs.length);
-    const randomVerb = irregularVerbs[randomIndex];
 
-    const row = document.createElement("tr");
-    for (let i = 0; i < randomVerb.length; i++) {
-        const cell = document.createElement("td");
-        cell.textContent = randomVerb[i];
-        row.appendChild(cell);
+    // Función para mostrar una fila aleatoria de la tabla
+    function showRandomRow() {
+        const randomIndex = Math.floor(Math.random() * irregularVerbs.length);
+        const randomVerb = irregularVerbs[randomIndex];
+
+        const row = document.createElement("tr");
+        for (let i = 0; i < randomVerb.length; i++) {
+            const cell = document.createElement("td");
+            cell.textContent = randomVerb[i];
+            row.appendChild(cell);
+        }
+
+        verbTable.innerHTML = ""; // Limpiar la tabla
+        verbTable.appendChild(row);
     }
 
-    table.innerHTML = ""; // Limpiar la tabla
-    table.appendChild(row);
-}
-
-// Agregar event listener al botón "Challenge"
-challengeButton.addEventListener("click", () => {
-    showRandomRow();
+    // Agregar event listener al botón "Challenge"
+    challengeButton.addEventListener("click", () => {
+        showRandomRow();
+    });
 });
+
 // Cargar los verbos al cargar la página
 loadVerbs();
