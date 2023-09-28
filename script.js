@@ -78,8 +78,6 @@ const verbTable = document.getElementById("verbTable");
 const easyButton = document.getElementById("easy");
 const intermediateButton = document.getElementById("intermediate");
 const hardButton = document.getElementById("hard");
-const challengeButton = document.getElementById("challenge");
-const table = document.querySelector("table");
 
 // Función para cargar los verbos en la tabla
 function loadVerbs() {
