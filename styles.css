@@ -42,41 +42,4 @@ main {
     padding: 20px;
 }
 
-/* Estilos para hacer la página responsive para móviles */
-@media screen and (max-width: 768px) {
-    h1 {
-        font-size: 24px;
-    }
 
-    h2 {
-        font-size: 16px;
-    }
-
-    nav {
-        padding: 5px 0;
-    }
-
-    button {
-        padding: 5px 10px;
-        font-size: 14px;
-    }
-
-    main {
-        padding: 10px;
-    }
-
-    /* Ajustar el ancho del contenedor al 100% */
-    .container {
-        width: 100%;
-    }
-
-    /* Hacer la tabla responsive */
-    table {
-        width: 100%;
-    }
-
-    td {
-        padding: 8px;
-        font-size: 14px;
-    }
-}
