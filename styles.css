@@ -65,6 +65,11 @@ main {
         padding: 10px;
     }
 
+    /* Ajustar el ancho del contenedor al 100% */
+    .container {
+        width: 100%;
+    }
+
     /* Hacer la tabla responsive */
     table {
         width: 100%;
