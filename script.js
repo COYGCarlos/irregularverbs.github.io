@@ -256,24 +256,5 @@ hardButton.addEventListener("click", () => {
 });
 
 
-// Función para mostrar una fila aleatoria en la tabla
-    function showRandomRow() {
-        const randomIndex = Math.floor(Math.random() * irregularVerbs.length);
-        const randomVerb = irregularVerbs[randomIndex];
-
-        // Crear una fila <tr> y agregar celdas <td> a la tabla existente
-        const row = verbTable.insertRow(-1); // Insertar al final de la tabla
-        for (let i = 0; i < randomVerb.length; i++) {
-            const cell = row.insertCell(i);
-            cell.textContent = randomVerb[i];
-        }
-    }
-
-    // Agregar event listener al botón "Challenge"
-    challengeButton.addEventListener("click", () => {
-        showRandomRow();
-    });
-});
-
 // Cargar los verbos al cargar la página
 loadVerbs();
