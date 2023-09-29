@@ -471,55 +471,55 @@ intermediateButton.addEventListener("click", () => {
 
 // Función para manejar el botón "Hard"
 hardButton.addEventListener("click", () => {
-    loadVerbs();
-    verbTable.querySelectorAll("tr").forEach((row) => {
-        const verbsInRow = row.querySelectorAll("td");
-        const randomIndex = Math.floor(Math.random() * 3);
+   loadVerbs();
 
-        verbsInRow.forEach((td, index) => {
-            if (index === randomIndex) {
-                const verb = td.textContent;
-                const conjugations = irregularVerbs.find((v) => v.includes(verb));
+   verbTable.querySelectorAll("tr").forEach((row, rowIndex) => {
+       if (rowIndex === 0) {
+           // Saltar la fila de encabezado
+           return;
+       }
 
-                if (conjugations) {
-                    td.textContent = conjugations[index];
-                }
-            } else {
-                const inputElement = document.createElement("input");
-                inputElement.type = "text";
-                inputElement.classList.add("conjugation-input");
-                td.innerHTML = "";
-                td.appendChild(inputElement);
+       const conjugationIndex = Math.floor(Math.random() * 3); // 0, 1 o 2
+       const verbsInRow = row.querySelectorAll("td");
 
-                let answeredCorrectly = false;
+       verbsInRow.forEach((td, index) => {
+           if (index === conjugationIndex) {
+               const verb = td.parentElement.querySelector("td:first-child").textContent;
+               const conjugations = irregularVerbs.find((v) => v.infinitive === verb);
 
-                inputElement.addEventListener("blur", () => {
-                    if (answeredCorrectly) {
-                        inputElement.readOnly = true;
-                        return;
-                    }
+               if (conjugations) {
+                   const conjugation = index === 0 ? conjugations.infinitive : (index === 1 ? conjugations.pastSimple : conjugations.pastParticiple);
+                   td.textContent = conjugation;
+               }
+           } else {
+               // Crear un elemento de entrada de texto para las casillas en blanco
+               const inputElement = document.createElement("input");
+               inputElement.type = "text";
+               inputElement.classList.add("conjugation-input");
+               td.innerHTML = ""; // Limpiar el contenido del td
+               td.appendChild(inputElement); // Agregar el elemento de entrada de texto
 
-                    const verb = inputElement.value;
-                    const conjugations = irregularVerbs.find((v) => v.includes(verb));
+               // Agregar un evento para comprobar la respuesta del usuario
+               inputElement.addEventListener("blur", () => {
+                   const verb = td.parentElement.querySelector("td:first-child").textContent;
+                   const conjugations = irregularVerbs.find((v) => v.infinitive === verb);
 
-                    if (conjugations) {
-                        const correctConjugation = conjugations[index];
+                   if (conjugations) {
+                       const correctConjugation = index === 1 ? conjugations.pastSimple : conjugations.pastParticiple;
+                       const userConjugation = inputElement.value.trim();
 
-                        if (verb === correctConjugation) {
-                            td.style.backgroundColor = "green";
-                            answeredCorrectly = true;
-                            inputElement.readOnly = true;
-                        } else {
-                            td.style.backgroundColor = "red";
-                        }
-                    }
-                });
-            }
-        });
-    });
+                       // Verificar si la respuesta del usuario coincide con la conjugación correcta
+                       if (userConjugation === correctConjugation) {
+                           td.style.backgroundColor = "green"; // Correcto (fondo verde)
+                       } else {
+                           td.style.backgroundColor = "red"; // Incorrecto (fondo rojo)
+                       }
+                   }
+               });
+           }
+       });
+   });
 });
-
-
 
 // Cargar los verbos al cargar la página
 loadVerbs();
