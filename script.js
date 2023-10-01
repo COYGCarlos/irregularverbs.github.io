@@ -500,22 +500,22 @@ hardButton.addEventListener("click", () => {
                td.appendChild(inputElement); // Agregar el elemento de entrada de texto
 
                // Agregar un evento para comprobar la respuesta del usuario
-               inputElement.addEventListener("blur", () => {
-                   const verb = td.parentElement.querySelector("td:first-child").textContent;
-                   const conjugations = irregularVerbs.find((v) => v.infinitive === verb);
+                inputElement.addEventListener("blur", () => {
+                    const verb = td.parentElement.querySelector("td:first-child").textContent;
+                    const conjugations = irregularVerbs.find((v) => v.infinitive === verb);
 
-                   if (conjugations) {
-                       const correctConjugation = index === 1 ? conjugations.pastSimple : conjugations.pastParticiple;
-                       const userConjugation = inputElement.value.trim();
+                    if (conjugations) {
+                        const correctConjugation = index === 1 ? conjugations.pastSimple : conjugations.pastParticiple;
+                        const userConjugation = inputElement.value.trim();
 
-                       // Verificar si la respuesta del usuario coincide con la conjugación correcta
-                       if (userConjugation === correctConjugation) {
-                           td.style.backgroundColor = "green"; // Correcto (fondo verde)
-                       } else {
-                           td.style.backgroundColor = "red"; // Incorrecto (fondo rojo)
-                       }
-                   }
-               });
+                        // Verificar si la respuesta del usuario coincide con la conjugación correcta
+                        if (userConjugation === correctConjugation) {
+                            td.style.backgroundColor = "green"; // Correcto (fondo verde)
+                        } else {
+                            td.style.backgroundColor = "red"; // Incorrecto (fondo rojo)
+                        }
+                    }
+                });
            }
        });
    });
